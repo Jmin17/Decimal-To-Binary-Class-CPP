@@ -3,7 +3,7 @@
 
 
 
-BitConverter::BitConverter(int inputDecimal)
+BitConverter::BitConverter(long inputDecimal)
 	:decimalValue(inputDecimal)
 {
 	this->checkIsNegative();
@@ -18,7 +18,7 @@ const string & BitConverter::getBitString()
 {
 	bool isNegative = decimalValue > -1 ? false : true;
 
-	int remainingValue = isNegative ? -1 * decimalValue : decimalValue;
+	long remainingValue = isNegative ? -1 * decimalValue : decimalValue;
 
 	int bp = 0;//binary position, representing 2^n with bp being the greatest n
 			   // such that 2^n is less than or equal to the decimal value
@@ -30,7 +30,7 @@ const string & BitConverter::getBitString()
 
 	int n = bp;// making n the current digit of the binary representation of the value
 
-	int power2;
+	long power2;
 	bitString = "";
 	bitString.resize(bp + 1, '0');
 	int i = 0;
@@ -113,7 +113,6 @@ void BitConverter::addOne()
 void BitConverter::makeFancy()
 {
 	int l = bitString.length();
-	int rl = l; //remaining length
 
 	if (l < 32)
 	{
@@ -125,7 +124,7 @@ void BitConverter::makeFancy()
 
 	l = 32;
 
-	int i = 0;// index value
+	int i = 0;// index values
 	int n = 0;
 	for (i = l; i > 0; i--)
 	{
@@ -136,16 +135,6 @@ void BitConverter::makeFancy()
 		n++;
 	}
 
-	
-	
-	//int x = l % 4;
-	//if (x > 0)
-	//{
-	//	if (!this->isNegative)
-	//		bitString.insert(0, 4 - x, '0');
-	//	else
-	//		bitString.insert(0, 4 - x, '1');
-	//}
 
 }
 
@@ -154,7 +143,7 @@ bool BitConverter::checkIsNegative()
 	return isNegative = ((decimalValue > -1) ? false : true);
 }
 
-const int &BitConverter::setDecimalValue(const int &inputDecimal)
+const int &BitConverter::setDecimalValue(const long &inputDecimal)
 {
 	decimalValue = inputDecimal;
 	this->checkIsNegative();

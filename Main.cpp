@@ -13,23 +13,25 @@ using namespace std;
 
 int main()
 {
-	stringstream buffer;
-	cout << endl<< "\t";
-	int y = 0;
-	string blank = "";
+	unique_ptr<stringstream> buffer;
+	make_unique<stringstream>();
+	long y = 0;
+	string decimalString = "";
 	BitConverter bc;
 
-	while (blank != "end")
+	while (decimalString != "end")
 	{
-		cin >> blank;
+		cout << endl << "\t";
+		cin >> decimalString;
 
-		if (blank != "end")
+		if (decimalString != "end")
 		{
-			buffer.clear();
-			buffer << blank;
-			buffer >> y;
+			buffer = make_unique<stringstream>();
+			*buffer << decimalString;
+			*buffer >> y;
 			bc.setDecimalValue(y);
 			cout << endl << "\t" << bc.getBitString() << endl << endl;
+			
 		}
 	}
 

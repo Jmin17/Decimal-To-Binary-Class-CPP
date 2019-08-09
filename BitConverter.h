@@ -8,19 +8,19 @@ class BitConverter
 {
 public:
 	BitConverter();
-	BitConverter(int inputDecimal);
+	BitConverter(long inputDecimal);
 
 	const string &getBitString();
-	const string &getBitString(int newDecimalValue)
+	const string &getBitString(long newDecimalValue)
 	{
 		decimalValue = newDecimalValue; 
 		return getBitString();
 	}
 
-	const int &setDecimalValue(const int &);
+	const int &setDecimalValue(const long &);
 
 private:
-	int decimalValue;
+	long decimalValue;
 	string bitString;
 	bool isNegative;
 
