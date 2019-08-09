@@ -14,7 +14,8 @@ using namespace std;
 int main()
 {
 	unique_ptr<stringstream> buffer;
-	make_unique<stringstream>();
+	//buffer = make_unique<stringstream>();
+
 	long y = 0;
 	string decimalString = "";
 	BitConverter bc;
